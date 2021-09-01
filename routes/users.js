@@ -19,5 +19,16 @@ router.post('/:id/books', async function (request, response) {
   response.json(book);
 });
 
+router.post('/:id/address', async function (request, response) {
+  const { id } = request.params;
+  const { zip_code, street, street_number, neighborhood, city, state, country } = request.body;
+
+  const address = await UsersController.addAddresstoUser( id, { zip_code, street, street_number, neighborhood, city, state, country
+  });
+
+  response.json(address);
+});
+
+
 
 module.exports = router;
